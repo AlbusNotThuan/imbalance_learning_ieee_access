@@ -1,0 +1,11 @@
+\section{Limitation}
+
+Despite the promising results of lightweight data augmentation techniques for handling imbalanced datasets, there are several limitations to consider in this study.
+
+\paragraph{Limited exploration of extreme imbalance ratios} The experiments of this work primarily focus on relatively mild imbalances, with ratios up to 100:1. Further research is required to assess the effectiveness of these methods in scenarios with more extreme imbalances, such as those with 1000:1 or even higher class imbalances. 
+
+\paragraph{Generalization to Large-Scale Multi-Class Datasets} While the methods demonstrated good results on datasets like SVHN-10, CIFAR-10, CINIC-10, CIFAR-100, and TinyImageNet-200 their performance on extremely large-scale datasets with a higher number of classes (\textit{e.g., datasets with thousands of classes, such as ImageNet}) remains underexplored. The computational efficiency of these techniques might degrade when scaled up, especially in resource-constrained environments.
+
+\paragraph{Lack of Cross-Domain Validation}The study chiefly evaluates methods to the classical problem of image classification. It would be beneficial to extend the proposed techniques to other domains, such as text or speech recognition, where class imbalance manifests itself differently. This would allow for a broader understanding of the generalizability and adaptability of the proposed lightweight techniques.
+
+

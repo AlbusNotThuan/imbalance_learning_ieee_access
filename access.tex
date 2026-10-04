@@ -1,0 +1,170 @@
+\RequirePackage{letltxmacro}
+\LetLtxMacro{\LaTeXtextbf}{\textbf}
+\documentclass{ieeeaccess}
+\LetLtxMacro{\textbf}{\LaTeXtextbf}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+% \usepackage{algorithmicx}%
+% \usepackage{algpseudocode}%
+\usepackage{graphicx}
+\graphicspath{{figures/}{photos/}{assets/}{fonts/}}
+\usepackage{textcomp}
+% \usepackage{xcolor}%
+\usepackage{subcaption}
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs}%
+\usepackage{listings}%
+\usepackage{url}
+\usepackage{caption}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{threeparttable}
+\usepackage{pifont}
+
+\newcommand{\cmark}{\ding{51}} % check mark
+\newcommand{\xmark}{\ding{55}} % cross mark
+
+\usepackage{bm}
+\makeatletter
+\AtBeginDocument{\DeclareMathVersion{bold}
+\SetSymbolFont{operators}{bold}{T1}{times}{b}{n}
+\SetSymbolFont{NewLetters}{bold}{T1}{times}{b}{it}
+\SetMathAlphabet{\mathrm}{bold}{T1}{times}{b}{n}
+\SetMathAlphabet{\mathit}{bold}{T1}{times}{b}{it}
+\SetMathAlphabet{\mathbf}{bold}{T1}{times}{b}{n}
+\SetMathAlphabet{\mathtt}{bold}{OT1}{pcr}{b}{n}
+\SetSymbolFont{symbols}{bold}{OMS}{cmsy}{b}{n}
+\renewcommand\boldmath{\@nomath\boldmath\mathversion{bold}}}
+\makeatother
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+%Your document starts from here ___________________________________________________
+\begin{document}
+\history{Date of publication xxxx 00, 0000, date of current version xxxx 00, 0000.}
+\doi{xx.xxxx/ACCESS.2026.xxxxxxx}
+
+\title{Lightweight Data Augmentation Techniques for Imbalanced Learning}
+
+\author{\uppercase{Thai-Duy Dinh}\authorrefmark{1},
+\uppercase{Minh-Thuan Nguyen}\authorrefmark{1}, 
+\uppercase{Thanh-Kim Le Duc}\authorrefmark{1},
+\uppercase{Duc-Quang Vu}\authorrefmark{2},
+\uppercase{Ngoc-Hoang Tran}\authorrefmark{3},
+\uppercase{Anh-Cang Phan}\authorrefmark{4},
+\uppercase{Ngoc-Hoang Le}\authorrefmark{7},
+\uppercase{Phung-Anh Nguyen}\authorrefmark{6},
+\uppercase{Tan-Ha Mai}\authorrefmark{5},
+and \uppercase{Lam-Son L\^{e}}\authorrefmark{1} \IEEEmembership{Member, IEEE}}
+
+\address[1]{Faculty of Engineering, Vietnamese-German University, Ho Chi Minh City 75911, Vietnam}
+\address[2]{Faculty of Information Technology, Thai Nguyen University of Information and Communication Technology, Vietnam}
+\address[3]{Department of Software Engineering, FPT University, Can Tho, Vietnam}
+\address[4]{Vinh Long University of Technology Education, Vinh Long, Vietnam}
+\address[5]{Department of Computer Science and Information Engineering, National Taiwan University, Taipei, Taiwan}
+\address[6]{Graduate Institute of Data Science, Taipei Medical University, Taipei, Taiwan}
+\address[7]{Graduate Institute of Biomedical Materials and Tissue Engineering, Taipei Medical University, Taipei, Taiwan}
+%\tfootnote{This paragraph of the first footnote will contain support information, including sponsor and financial support acknowledgment.}
+
+\markboth
+{Author \headeretal: Preparation of Papers for IEEE Access}
+{Author \headeretal: Preparation of Papers for IEEE Access}
+
+\corresp{Corresponding author: Lam-Son L\^{e} (e-mail: son.ll@vgu.edu.vn).}
+
+
+\begin{abstract}
+Imbalanced learning, when some classes have far fewer examples than others, creates real challenges in areas like medical diagnosis, fraud detection, and rare-event forecasting. Advanced generative methods, such as GANs, diffusion models, and DeepSMOTE, can effectively augment minority-class examples, but typically demand substantial compute resources and complex pipelines, which limits their practicality in environments with limited resources. In this work, we focus instead on lightweight data-augmentation techniques that balance speed and accuracy. By combining simple augmentations (Mixup, Cutout) with careful resampling and class-weighting, we achieve significant gains in minority-class performance without extra computational cost. Evaluated on imbalanced versions of SVHN-10, CIFAR-10, CINIC-10, CIFAR-100 and TinyImageNet-200 our approach consistently improves both minority-class accuracy and overall generalization, while keeping training fast and resource-friendly. These results offer a practical solution to handling class imbalance in constrained environments. Our implementation is available as an open-source project on GitHub\footnote{\url{https://github.com/duydinhthai27/lightweight-ILWH}}.
+
+\end{abstract}
+
+\begin{keywords}
+%Enter key words or phrases in alphabetical order, separated by commas. 
+Deep Learning, Lightweight Data Augmentation, Imbalanced Classification, Imbalanced Lightweight Hybrid Approach.
+\end{keywords}
+
+\titlepgskip=-21pt
+
+\maketitle
+
+\input{sections/introduction}
+\input{sections/related_work}
+\input{sections/why-lightweight}
+\input{sections/Lightweight_imbalanced}
+\input{sections/ablation-study}
+\input{sections/experiment}
+\input{sections/conclusion}
+\input{sections/limitation}
+
+\bibliographystyle{IEEEtran}
+\bibliography{reference.bib}
+
+
+\begin{IEEEbiography}[{\includegraphics[width=1.1in,height=1.25in,clip,keepaspectratio]{dtd.jpg}}]{Thai-Duy Dinh}
+received a double degree from Frankfurt University of Applied Sciences and the Vietnamese-German University. He was recognized with a National Mathematics Award for university students, earning a Silver Medal in Algebra and a Bronze Medal in Calculus. His thesis includes mosquito classification, audio signal processing, and machine learning applications. He has pursued work in imbalanced data learning, weakly supervised learning, and optimal transport. Also, he is currently working as an IT Consultant at Netcompany.
+% \vspace{-5\baselineskip}
+\end{IEEEbiography}
+
+\begin{IEEEbiography}[{\includegraphics[width=1.1in,height=1.25in,clip,keepaspectratio]{thuan.jpg}}]{Minh-Thuan Nguyen}
+was born in Ho Chi Minh City, Vietnam, he received a double degree from Frankfurt University of Applied Sciences and the Vietnamese-German University. His thesis involved collecting large-scale job-posting data and analyzing it with large language model (LLM) methods. He developed machine-learning models for a priority voice-routing dataset used in telecommunications. He is currently a member of the AAIR Lab at the Vietnamese-German University, where research focuses on imbalanced learning, machine learning, AI vision, applications of LLMs, and weakly-supervised learning.
+% \vspace{-5\baselineskip}
+\end{IEEEbiography}
+
+\begin{IEEEbiography}
+[{\includegraphics[width=1.1in,height=1.25in,clip,keepaspectratio]{kim.png}}]{Thanh-Kim Le Duc }
+was born in Ho Chi Minh City, Vietnam, and is currently a final-year student at the Vietnamese-German University. He is a member of the AAIR Lab at the Vietnamese-German University, where his research focuses on imbalanced learning and semi-supervised learning, with applications in robust and efficient machine learning. His academic work emphasizes developing methods that address data scarcity and distributional imbalance, aiming to improve generalization and fairness in real-world scenarios.
+\end{IEEEbiography}
+
+\begin{IEEEbiography}
+[{\includegraphics[width=1.1in,height=1.25in,clip,keepaspectratio]{dat.jpeg}}]{Man-Dat Nguyen}
+was born in Ho Chi Minh City, Vietnam. He received a double degree from Frankfurt University of Applied Sciences and the Vietnamese-German University. His interests include imbalanced data learning, lightweight machine learning, and efficient training strategies for real-world applications. He has worked on mosquito classification and on-device AI systems, with particular interest in data augmentation and effective re-weighting methods for imbalanced classification.
+% \vspace{-5\baselineskip}
+\end{IEEEbiography}
+
+\begin{IEEEbiography}[{\includegraphics[width=1.1in,height=1.25in,clip,keepaspectratio]{quang.jpg}}]{Duc-Quang Vu} received the Ph.D. degree in Department of Computer Science \& Information Engineering, National Central University, Taiwan in 2022. He is currently a lecturer at Thai Nguyen University of Information and Communication Technology and a researcher at Queen's University of Belfast.
+He receives several awards and honors, including 2nd in the National Informatics Olympiad for Universities, Vietnam in 2009; 3rd in National Informatics Olympiad for Universities, Vietnam in 2011; 4th in the Young Scientist Talent Contest for Universities, Vietnam in 2012. He currently a reviewer at several journals and conferences such as Multimedia Systems, Engineering Applications of Artificial Intelligence, ECAI, ACML, etc. His research interests include machine learning, deep learning, computer vision, and bioinformatics.
+% \vspace{-5\baselineskip}
+\end{IEEEbiography}
+
+\begin{IEEEbiography}
+[{\includegraphics[width=1.1in,height=1.15in,clip,keepaspectratio]{TNH.jpg}}]{Ngoc-Hoang Tran} received the B.S. degree in mechatronics engineering from the Ho Chi Minh City University of Technology, Ho Chi Minh City, Vietnam, in 2015, and the Ph.D. degree in electrical and computer engineering from Sungkyunkwan University, Suwon, South Korea, in 2020.
+From 2020 to 2022, he was a Postdoctoral Researcher with the Department of Electrical and Computer Engineering, Sungkyunkwan University. Since 2022, he has been a Lecturer and a Researcher with the Department of Software Engineering, FPT University, Can Tho, Vietnam. His research interests include signal processing, motion control, embedded systems, autonomous robotics, computer vision, machine learning, and deep learning.
+% \vspace{-5\baselineskip}
+\end{IEEEbiography}
+
+\begin{IEEEbiography}
+[{\includegraphics[width=1.15in,height=1.25in,clip,keepaspectratio]{PAC.jpg}}]{Anh-Cang Phan} is a lecturer at Vinh Long University of Technology Education, Vietnam. He received his Ph.D. in Informatics from Aix-Marseille University, France, and was conferred the title of Associate Professor in 2023. His research interests cover a range of topics, including Machine Learning, Deep Learning, Big Data, IoT and 3D Modeling, with a strong focus on developing intelligent systems that bridge the gap between theory and real-world applications. Over the years, Dr. Phan has conducted numerous practical and interdisciplinary research projects, particularly in smart agriculture, intelligent irrigation systems, and medical image processing applications that have been successfully implemented in several hospitals across Vietnam. His works contribute significantly to advancing digital transformation in both the agricultural and healthcare sectors. In 2020, Dr. Phan was listed in the Vietnam Yellow Book of Innovation by the Ministry of Science and Technology, recognizing his outstanding contributions to scientific research, innovation, and technological development in Vietnam.
+\end{IEEEbiography}
+
+\begin{IEEEbiography}
+[{\includegraphics[width=1.1in,height=1.25in,clip,keepaspectratio]{LNH.jpg}}]{Ngoc-Hoang Le} M.Sc. is currently a Ph.D. student at the Graduate Institute of Biomedical Materials and Tissue Engineering, College of Biomedical Engineering, Taipei Medical University, Taiwan. He received his Master’s degree in Biomedical Materials and has been actively engaged in interdisciplinary research at the interface of biomedical materials, nanotechnology, and artificial intelligence in medicine. His current work focuses on the development of advanced bio/nanomaterials for ocular and musculoskeletal applications, as well as the design of AI-driven pipelines for medical image analysis and translational healthcare.
+\end{IEEEbiography}
+
+\begin{IEEEbiography}
+[{\includegraphics[width=1.1in,height=1.15in,clip,keepaspectratio]{PA.png}}]{Phung-Anh Nguyen} currently works as an assistant professor at Graduate Institute of Data Science in Taipei Medical University with expertise in medical informatics, data analytics, machine learning, and human-computer interaction, focus on the life science.
+He hold a Bachelor of Engineering of Science (Major in Information Technology) from Hanoi Open University, Hanoi, Vietnam. Afterward, 
+he graduated as Doctor of Philosophy (Ph.D.) in Biomedical Informatics at National Yang-Ming University, Taipei, Taiwan. Among 10 years of experiences in the field of Healthcare Informatics, he has developed the HIT products and implemented the HIT projects for clients who are from enterprise to ministry. Project scope has been covered in different levels (from small to huge; from enterprise to national level), and it is defined in fields as ICT, Healthcare. Especial, he has a lot of lessons learned when he have faced the difficult matters of the project in several roles (engineering, researcher, manager, and so forth). It is valued experiences to help me to manage projects successfully.
+    % \vspace{-5\baselineskip}
+\end{IEEEbiography}
+
+\begin{IEEEbiography}
+[{\includegraphics[width=1.15in,height=1.25in]{mth.png}}]{Tan-Ha Mai}
+is a PhD candidate in Computer Science and Information Engineering at National Taiwan University. His research focuses on weakly supervised and imbalanced learning, optimal transport, large language models (LLMs), vision–language models (VLMs), and semi-supervised learning, with particular emphasis on developing practical and robust methods for complementary-label learning (CLL). He brings over a decade of industry experience in managing cloud infrastructure, telephony solutions, AI projects, and DevOps operations for Swiss and Japanese companies. Combining research and industry expertise, he is dedicated to inspiring future innovators as a lecturer. Ha has served as Workflow Chair and Session Chair for ACML 2024, and as a reviewer for leading AI conferences and journals, including AISTATS, TPAMI, ACML, AAAI, NeurIPS and CVPR.
+% \vspace{-20\baselineskip}
+\end{IEEEbiography}
+
+\begin{IEEEbiography}
+[{\includegraphics[width=1.1in,height=1.25in,clip,keepaspectratio]{LLSon.png}}]{Lam-Son L\^{e}}
+(Member, IEEE) received his Ph.D. from the \'{E}cole Polytechnique F\'{e}d\'{e}rale de Lausanne, Switzerland, in 2008. He spent four years as a Postdoctoral Researcher at the University of Wollongong, Australia. He currently holds dual roles at the Vietnamese-German University: Academic Coordinator of the Bachelor's program in Computer Science and Lecturer in Software Engineering. His research interests include digital twins, decentralized computing, next-generation software architectures, and AI-driven business process management. Prior to joining VGU, he spent nine years at the Ho Chi Minh City University of Technology (HCMUT) -- Vietnam National University, where he led a research group focused on data-driven enterprise software and processes. Lam-Son has successfully supervised three PhD students, served as program chair, demo track chair, publicity chair for various conferences in software engineering and enterprise computing. He has published around 70 papers in conference proceedings and journals.
+% \vspace{-5\baselineskip}
+\end{IEEEbiography} 
+
+%The first paragraph may contain a place and/or date of birth (list place, then date). Next, the author's educational background is listed. The degrees should be listed with type of degree in what field, which institution, city, state, and country, and year the degree was earned. The author's major field of study should be lower-cased. 
+
+%The second paragraph uses the pronoun of the person (he or she) and not the author's last name. It lists military and work experience, including summer and fellowship jobs. Job titles are capitalized. The current job must have a location; previous positions may be listed without one. Information concerning previous publications may be included. 
+\EOD
+\end{document}
+

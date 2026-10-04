@@ -1,0 +1,7 @@
+\section{Conclusion} \label{sec:conclusion}
+
+In this work, we evaluate lightweight strategies designed to address the challenges of imbalanced learning under limited computational resources. When resource constraints restrict the use of large-scale or computationally heavy models, achieving both efficiency and robustness becomes crucial. Our study systematically investigates how lightweight configurations behave when combined with data-level and training-level adjustments such as augmentation and DRW.
+
+Although individual lightweight methods may not perform effectively when applied in isolation, we observe that combining them with data augmentation and DRW leads to consistent and stable improvements across multiple datasets. This reveals an important phenomenon: even under limited capacity, the synergy between balanced sampling and regularization through augmentation can significantly enhance model generalization.
+
+Furthermore, our benchmark over five diverse datasets demonstrates that, when properly regularized, random-based lightweight approaches achieve surprisingly competitive performance among various sampling and combination strategies, including random sampling, weighted sampling, and hybrid augmentation setups. This highlights that simple yet well-calibrated lightweight pipelines can remain effective solutions in constrained environments.
